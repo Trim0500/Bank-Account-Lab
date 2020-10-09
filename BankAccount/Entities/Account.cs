@@ -8,44 +8,44 @@ namespace BankAccount.Entities
 {
     abstract class Account : IAccount
     {
-        public double startingBalance { get; set; }
-        public double currentBalance { get; set; }
+        public double StartingBalance { get; set; }
+        public double CurrentBalance { get; set; }
         double totalDeposits;
         int numDeposits;
         double totalWithdraw;
         int numWithdraw;
-        public double interestRate { get; set; }
+        public double InterestRate { get; set; }
         double monServCharge;
         AccountStatus AS = AccountStatus.Active;
 
         Account (double sB, double iR)
         {
-            this.startingBalance = sB;
-            this.interestRate = iR;
+            this.StartingBalance = sB;
+            this.InterestRate = iR;
         }
         
-        public override void MakeWithdrawl(double amount)
+        public void MakeWithdrawl(double amount)
         {
-            currentBalance -= amount;
+            CurrentBalance -= amount;
             numWithdraw++;
         }
         
-        public override void MakeDeposit(double amount)
+        public void MakeDeposit(double amount)
         {
-            currentBalance += amount;
+            CurrentBalance += amount;
             numDeposits++;
         }
 
-        public override void CalculateInterest()
+        public void CalculateInterest()
         {
-            double monInterestRate = interestRate / 12;
-            double monInterest = currentBalance * monInterestRate;
-            currentBalance += monInterest;
+            double monInterestRate = InterestRate / 12;
+            double monInterest = CurrentBalance * monInterestRate;
+            CurrentBalance += monInterest;
         }
 
-        public override string CloseAndReport()
+        public string CloseAndReport()
         {
-            currentBalance -= monServCharge;
+            CurrentBalance -= monServCharge;
 
             CalculateInterest();
 
@@ -55,11 +55,11 @@ namespace BankAccount.Entities
 
             StringBuilder report = new StringBuilder();
             report.Append("This month's starting balance: ");
-            report.Append(string.Format("{0:C2}", startingBalance) + "\n");
+            report.Append(string.Format("{0:C2}", StartingBalance) + "\n");
             report.Append("This month's final balance: ");
-            report.Append(string.Format("{0:C2}", currentBalance) + "\n");
+            report.Append(string.Format("{0:C2}", CurrentBalance) + "\n");
             report.Append("The values yield a change of: ");
-            report.Append(string.Format("{0:F2}", (currentBalance/startingBalance)*100));
+            report.Append(string.Format("{0:F2}", (CurrentBalance/StartingBalance)*100));
 
             return report.ToString();
         }
