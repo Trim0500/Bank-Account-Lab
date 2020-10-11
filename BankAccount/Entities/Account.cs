@@ -13,24 +13,24 @@ namespace BankAccount.Entities
         double totalDeposits;
         int numDeposits;
         double totalWithdraw;
-        int numWithdraw;
+        protected int numWithdraw;
         public double InterestRate { get; set; }
-        double monServCharge;
-        AccountStatus AS = AccountStatus.Active;
+        protected double monServCharge;
+        protected AccountStatus AS;
 
-        Account (double sB, double iR)
+        public Account (double sB, double iR)
         {
             this.StartingBalance = sB;
             this.InterestRate = iR;
         }
         
-        public void MakeWithdrawl(double amount)
+        public virtual void MakeWithdrawl(double amount)
         {
             CurrentBalance -= amount;
             numWithdraw++;
         }
         
-        public void MakeDeposit(double amount)
+        public virtual void MakeDeposit(double amount)
         {
             CurrentBalance += amount;
             numDeposits++;
@@ -43,7 +43,7 @@ namespace BankAccount.Entities
             CurrentBalance += monInterest;
         }
 
-        public string CloseAndReport()
+        public virtual string CloseAndReport()
         {
             CurrentBalance -= monServCharge;
 
