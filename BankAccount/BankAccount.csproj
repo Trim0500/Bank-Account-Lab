@@ -46,7 +46,9 @@
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\AccountStatus.cs" />
     <Compile Include="Entities\ChequingAccount.cs" />
+    <Compile Include="Entities\GlobalSavingsAccount.cs" />
     <Compile Include="Entities\IAccount.cs" />
+    <Compile Include="Entities\IExchangable.cs" />
     <Compile Include="Entities\SavingsAccount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
