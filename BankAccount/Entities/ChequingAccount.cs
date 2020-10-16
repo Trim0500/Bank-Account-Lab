@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankAccount.Extensions;
 
 namespace BankAccount.Entities
 {
@@ -16,7 +17,7 @@ namespace BankAccount.Entities
         {
             if (base.CurrentBalance - amount < 0)
             {
-                Console.WriteLine("Writing a cheque of {0:C2} will cause the balance to dip past 0$, service charges of 15$ will be applied.", amount);
+                Console.WriteLine("Writing a cheque of {0} will cause the balance to dip past $0, service charges of $15 will be applied.", amount.toNAMoney(true));
                 base.CurrentBalance -= 15.0;
                 if (base.CurrentBalance < 0)
                 {

@@ -12,21 +12,21 @@ namespace BankAccount.Extensions
         {
             if(round == true)
             {
-                Math.Round(value);
+                Math.Round(value, MidpointRounding.ToEven);
             }
             else
             {
-                Math.Round(value, MidpointRounding.ToEven);
+                Math.Floor(value);
             }
 
             string format;
 
             if (value > 0)
             {
-                format = String.Format("${0:C2}", value);
+                format = String.Format("${0:F2}", value);
             }
             else
-                format = String.Format("(${0:C2})", value);
+                format = String.Format("(${0:F2})", value);
 
             return format;
         }
