@@ -172,7 +172,7 @@ namespace BankAccount
                         Console.WriteLine("The values yield a change of: {0:F2}%", AGS.GetPercentageChange());
                         break;
                     case "D":
-                        AGS.USValue(1.34);
+                        Console.WriteLine(AGS.USValue(0.76).toNAMoney(true));
                         break;
                     case "R":
                         break;
